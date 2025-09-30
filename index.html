@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>International Technical Supply Ltda. — Proveedor técnico en Chile desde 1995</title>
+  <meta name="description" content="Página informativa simple con Inicio, Nosotros y Contacto. Construida como landing page ligera y rápida." />
+  <meta name="robots" content="index,follow" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="International Technical Supply Ltda." />
+  <meta property="og:description" content="Proveedor técnico en Chile desde 1995. Importaciones, equipos y repuestos especializados." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-image.jpg" />
+  <meta property="og:url" content="https://www.itsl.cl" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --bg: #0d3e67;
+      --panel: #0f4776;
+      --text: #e8edf2;
+      --muted: #c7d5e5;
+      --brand: #1f6fb2;
+      --brand-2: #69a6ff;
+      --ring: rgba(31,111,178,0.45);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(180deg, var(--bg), #0e1117 60%, #0b0c10);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--text); text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Layout */
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+
+    /* Nav */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: color-mix(in oklab, var(--panel) 70%, transparent);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+    .brand-logo { width: 36px; height: 36px; border-radius: 10px; background: radial-gradient(circle at 30% 30%, var(--brand), var(--brand-2)); box-shadow: 0 0 0 3px rgba(255,255,255,0.05) inset; }
+    .nav a { opacity: 0.9; }
+    .nav a:hover { opacity: 1; }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .cta { padding: 8px 14px; border-radius: 999px; background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #07121c; font-weight: 700; box-shadow: 0 8px 20px rgba(58,166,255,0.25); }
+
+    /* Hero */
+    .hero { padding: 72px 0 36px; }
+    .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; }
+    .kicker { color: var(--brand-2); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 12px; }
+    h1 { font-size: clamp(32px, 3.4vw + 12px, 54px); line-height: 1.1; margin: 8px 0 16px; }
+    .lead { color: var(--muted); font-size: 18px; }
+    .hero-card { background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 85%, transparent), color-mix(in oklab, #0a0f14 85%, transparent)); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 18px; box-shadow: 0 10px 40px rgba(0,0,0,.3); }
+
+    /* Features */
+    .section { padding: 64px 0; }
+    .section h2 { font-size: clamp(24px, 2.2vw + 10px, 36px); margin: 0 0 10px; }
+    .section p { color: var(--muted); }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 20px; }
+    .card { background: color-mix(in oklab, var(--panel) 85%, transparent); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 18px; transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.25); }
+    .card h3 { margin: 6px 0; font-size: 18px; }
+    .badge { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); }
+
+    /* About / Nosotros */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 18px; }
+
+    /* Contacto */
+    form { display: grid; gap: 12px; margin-top: 16px; }
+    label { font-size: 14px; color: var(--muted); }
+    input, textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: #0c1117; color: var(--text); outline: none; }
+    input:focus, textarea:focus { border-color: var(--ring); box-shadow: 0 0 0 4px var(--ring); }
+    button { cursor: pointer; border: none; background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #07121c; font-weight: 800; padding: 12px 18px; border-radius: 12px; }
+
+    /* Footer */
+    footer { padding: 32px 0 60px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.06); background: #0a0f14; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .nav-links { gap: 12px; }
+    }
+  </style>
+  <script>
+    // Scroll suave
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          const el = document.querySelector(id);
+          if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start'}); history.pushState(null, '', id); }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <img src="/assets/logo-its-invert.png" alt="Logo ITSL" class="brand-logo" style="width:36px;height:36px;border-radius:6px;background:none;box-shadow:none"/>
+        <span>International Technical Supply Ltda.</span>
+      </a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#inicio" data-lang="es">Inicio</a>
+        <a href="#inicio" data-lang="en" style="display:none;">Home</a>
+        <a href="#nosotros" data-lang="es">Nosotros</a>
+        <a href="#nosotros" data-lang="en" style="display:none;">About</a>
+        <a href="#sectores" data-lang="es">Sectores</a>
+        <a href="#sectores" data-lang="en" style="display:none;">Sectors</a>
+        <a href="#representaciones" data-lang="es">Representaciones</a>
+        <a href="#representaciones" data-lang="en" style="display:none;">Representations</a>
+        <a href="#contacto" data-lang="es">Contacto</a>
+        <a href="#contacto" data-lang="en" style="display:none;">Contact</a>
+        <button id="lang-toggle" class="cta" type="button" aria-label="Cambiar idioma">ES / EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / Inicio -->
+  <main id="inicio" class="hero" style="background-image:url('/assets/banner-hero.jpg'); background-size:cover; background-position:center;">
+    <div class="container hero-grid" style="backdrop-filter: saturate(120%) brightness(1);">
+      <div>
+        <div class="kicker" data-lang="es">Desde 1995</div>
+        <div class="kicker" data-lang="en" style="display:none;">Since 1995</div>
+        <h1>
+          <span data-lang="es">Suministro técnico especializado para defensa y sector marítimo</span>
+          <span data-lang="en" style="display:none;">Specialized technical supply for defense and maritime sectors</span>
+        </h1>
+        <p class="lead">
+          <span data-lang="es">ITSL provee repuestos eléctricos, electrónicos y de ingeniería, con foco en la <strong>Armada de Chile</strong> y programas de modernización y actualización tecnológica.</span>
+          <span data-lang="en" style="display:none;">ITSL provides electrical, electronic, and engineering spare parts, focused on the <strong>Chilean Navy</strong> and modernization & upgrade programs.</span>
+        </p>
+        <div style="display:flex; gap:12px; margin-top:18px;">
+          <a class="cta" href="#contacto" data-lang="es">Solicitar información</a>
+          <a class="cta" href="#contacto" data-lang="en" style="display:none;">Request information</a>
+          <a href="#nosotros" style="opacity:.9" data-lang="es">Conócenos →</a>
+          <a href="#nosotros" style="opacity:.9; display:none;" data-lang="en">About us →</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Imagen destacada">
+        <img src="/assets/banner-side.jpg" alt="Imagen corporativa ITSL" />
+      </div>
+    </div>
+  </main>
+
+  <!-- Features -->
+  <section class="section" aria-labelledby="features-title">
+    <div class="container">
+      <h2 id="features-title">¿Por qué elegirnos?</h2>
+      <p>Rápido de cargar, fácil de mantener y preparado para crecer cuando tu negocio lo necesite.</p>
+      <div class="features">
+        <article class="card">
+          <span class="badge">Rendimiento</span>
+          <h3>Carga ultrarrápida</h3>
+          <p>HTML, CSS y un toque de JS: sin dependencias pesadas. Puntuaciones altas en Core Web Vitals.</p>
+        </article>
+        <article class="card">
+          <span class="badge">Escalabilidad</span>
+          <h3>Listo para crecer</h3>
+          <p>De landing a sitio completo o React/Next.js cuando toque. Mantén la base sencilla hoy.</p>
+        </article>
+        <article class="card">
+          <span class="badge">SEO</span>
+          <h3>Optimizado para buscadores</h3>
+          <p>Metadatos, Open Graph y estructura semántica para posicionar mejor y compartir con vista previa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nosotros -->
+  <section id="nosotros" class="section" aria-labelledby="about-title">
+    <div class="container about-grid">
+      <div>
+        <h2 id="about-title" data-lang="es">Nosotros</h2>
+        <h2 id="about-title-en" data-lang="en" style="display:none;">About Us</h2>
+        <p data-lang="es"><strong>International Technical Supply Ltda.</strong> (ITSL), fundada en febrero de 1995, es una sociedad de responsabilidad limitada especializada en el suministro de repuestos técnicos avanzados para el sector marítimo: componentes eléctricos, electrónicos y de ingeniería. Nuestro foco principal es servir a la <strong>Armada de Chile</strong>, ofreciendo soluciones técnicas especializadas y participación en proyectos de modernización, actualización y renovación tecnológica.</p>
+        <p data-lang="en" style="display:none;"><strong>International Technical Supply Ltda.</strong> (ITSL), established in February 1995, is a Limited Liability Company specialized in advanced technical spare parts for the maritime sector: electrical, electronic, and engineering components. Our primary focus is the <strong>Chilean Navy</strong>, providing specialized technical solutions and partnering on modernization and upgrade programs.</p>
+        <h3 class="badge" data-lang="es">Experiencia relevante</h3>
+        <h3 class="badge" data-lang="en" style="display:none;">Relevant experience</h3>
+        <ul data-lang="es">
+          <li><strong>Proyecto Tridente (1998–2004):</strong> representación de consorcio (United Defense, Lockheed Martin, Northrop Grumman Shipyard); proceso que concluyó con la adquisición de 2 fragatas clase M y 2 clase L en Países Bajos por parte de la Armada de Chile.</li>
+          <li><strong>Air Defense Program (ADP):</strong> participación conjunta con Lockheed Martin desde 2011 para modernización de fragatas clase T‑23. Contrato firmado el 03‑feb‑2017; tres fragatas completadas y en garantía técnica. Equipos de prueba en Chile bajo importación temporal.</li>
+          <li><strong>IPMS — Clase M:</strong> actualización del Integrated Platform Management System junto a L‑3 Harris MAPPS Inc y SISDEF Chile.</li>
+        </ul>
+        <ul data-lang="en" style="display:none;">
+          <li><strong>Trident Project (1998–2004):</strong> represented a consortium (United Defense, Lockheed Martin, Northrop Grumman Shipyard); process concluded with the acquisition of 2 M‑class and 2 L‑class frigates in the Netherlands by the Chilean Navy.</li>
+          <li><strong>Air Defense Program (ADP):</strong> joint participation with Lockheed Martin since 2011 to upgrade T‑23 class frigates. Contract signed on Feb 3, 2017; three frigates completed and under technical warranty. Test equipment retained in Chile under temporary import status.</li>
+          <li><strong>IPMS — M Class:</strong> upgrade of the Integrated Platform Management System with L‑3 Harris MAPPS Inc and SISDEF Chile.</li>
+        </ul>
+        <h3 class="badge" data-lang="es">Misión & Visión</h3>
+        <h3 class="badge" data-lang="en" style="display:none;">Mission & Vision</h3>
+        <p data-lang="es"><strong>Misión:</strong> Realizar las gestiones pertinentes para obtener y proveer equipos, partes y piezas, donde sea que se encuentren, satisfaciendo los requerimientos con los estándares y garantías de calidad pertinentes.</p>
+        <p data-lang="en" style="display:none;"><strong>Mission:</strong> Carry out the necessary arrangements to source and provide equipment, parts, and components—wherever they are located—meeting required standards and quality warranties.</p>
+        <p data-lang="es"><strong>Visión:</strong> Dar respuesta a las necesidades de equipos, piezas y partes de nuestros clientes con alto nivel de calidad y mejora continua, contribuyendo a un mantenimiento adecuado y consolidándonos como proveedor confiable en el rubro.</p>
+        <p data-lang="en" style="display:none;"><strong>Vision:</strong> Provide high‑quality, continuously improving responses to customers’ equipment and spare‑part needs, supporting proper maintenance and consolidating our position as a trusted supplier.</p>
+
+        <h3 class="badge" data-lang="es">Descripción ampliada</h3>
+        <h3 class="badge" data-lang="en" style="display:none;">Company description</h3>
+        <p data-lang="es">ITSL se especializa en el suministro de repuestos técnicos avanzados para el sector marítimo, abarcando componentes <em>eléctricos</em>, <em>electrónicos</em> y de <em>ingeniería</em>. Nuestro foco ha sido la Armada de Chile, con participación en programas de <strong>modernización</strong>, <strong>actualización</strong> y <strong>renovación tecnológica</strong>, cultivando relaciones de largo plazo con actores clave.</p>
+        <p data-lang="en" style="display:none;">ITSL specializes in advanced technical spare parts for the maritime sector, covering <em>electrical</em>, <em>electronic</em>, and <em>engineering</em> components. We have focused on the Chilean Navy, participating in <strong>modernization</strong>, <strong>upgrade</strong>, and <strong>technology renewal</strong> programs while sustaining long‑term relationships with key stakeholders.</p>
+
+        <h3 class="badge" data-lang="es">Experiencia y logros</h3>
+        <h3 class="badge" data-lang="en" style="display:none;">Experience & achievements</h3>
+        <p data-lang="es"><strong>Proyecto Tridente (1998–2004):</strong> representamos un consorcio —United Defense, Lockheed Martin y Northrop Grumman Shipyard— en el proceso que concluyó con la adquisición de 2 fragatas clase M y 2 clase L en los Países Bajos por parte de la Armada de Chile.</p>
+        <p data-lang="en" style="display:none;"><strong>Trident Project (1998–2004):</strong> we represented a consortium —United Defense, Lockheed Martin, and Northrop Grumman Shipyard— in the process that concluded with the acquisition of 2 M‑class and 2 L‑class frigates in the Netherlands by the Chilean Navy.</p>
+        <p data-lang="es"><strong>Air Defense Program (ADP):</strong> desde 2011 participamos junto a Lockheed Martin en la modernización de fragatas clase T‑23. El contrato, firmado el 3 de febrero de 2017, se encuentra en ejecución, con tres fragatas completadas y bajo garantía técnica. El equipamiento de pruebas permanece en Chile bajo importación temporal.</p>
+        <p data-lang="en" style="display:none;"><strong>Air Defense Program (ADP):</strong> since 2011 we have worked with Lockheed Martin on T‑23 class frigate upgrades. The contract, signed on February 3, 2017, is ongoing; three frigates have been completed and are under technical warranty. Test equipment remains in Chile under temporary import.</p>
+        <p data-lang="es"><strong>IPMS – Clase M:</strong> actualmente colaboramos con L‑3 Harris MAPPS Inc y SISDEF Chile en la actualización del <em>Integrated Platform Management System</em> de las fragatas clase M.</p>
+        <p data-lang="en" style="display:none;"><strong>IPMS – M Class:</strong> we are engaged with L‑3 Harris MAPPS Inc and SISDEF Chile on upgrading the <em>Integrated Platform Management System</em> of the M‑class frigates.</p>
+      </div>
+      <div class="card">
+        <img src="/assets/logo-its-banner-left.png" alt="Identidad corporativa ITSL" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Historia / Hitos -->
+  <section id="hitos" class="section" aria-labelledby="timeline-title">
+    <div class="container">
+      <h2 id="timeline-title" data-lang="es">Historia & Hitos</h2>
+      <h2 id="timeline-title-en" data-lang="en" style="display:none;">History & Milestones</h2>
+      <div class="features" style="grid-template-columns: repeat(4, 1fr);">
+        <article class="card">
+          <h3>1995</h3>
+          <p data-lang="es">Fundación de ITSL como sociedad de responsabilidad limitada en Chile.</p>
+          <p data-lang="en" style="display:none;">ITSL founded as a Limited Liability Company in Chile.</p>
+        </article>
+        <article class="card">
+          <h3>1998–2004</h3>
+          <p data-lang="es">Participación en <strong>Proyecto Tridente</strong> representando a un consorcio internacional.</p>
+          <p data-lang="en" style="display:none;">Participation in the <strong>Trident Project</strong>, representing an international consortium.</p>
+        </article>
+        <article class="card">
+          <h3>2011 →</h3>
+          <p data-lang="es">Inicio de colaboración en <strong>ADP</strong> junto a Lockheed Martin para fragatas T‑23.</p>
+          <p data-lang="en" style="display:none;">Start of collaboration on <strong>ADP</strong> with Lockheed Martin for T‑23 frigates.</p>
+        </article>
+        <article class="card">
+          <h3>2017</h3>
+          <p data-lang="es">Firma de contrato (03‑feb); 3 fragatas completadas y en garantía técnica.</p>
+          <p data-lang="en" style="display:none;">Contract signed (Feb 3); 3 frigates completed and under warranty.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sectores -->
+  <section id="sectores" class="section" aria-labelledby="sectors-title">
+    <div class="container">
+      <h2 id="sectors-title" data-lang="es">Sectores</h2>
+      <h2 id="sectors-title-en" data-lang="en" style="display:none;">Sectors</h2>
+      <div class="features">
+        <article class="card"><h3 data-lang="es">Defensa</h3><h3 data-lang="en" style="display:none;">Defense</h3><p data-lang="es">Suministro y modernización para fragatas y sistemas críticos.</p><p data-lang="en" style="display:none;">Supply and upgrades for frigates and critical systems.</p></article>
+        <article class="card"><h3 data-lang="es">Marítimo</h3><h3 data-lang="en" style="display:none;">Maritime</h3><p data-lang="es">Repuestos eléctricos, electrónicos y de ingeniería para flotas.</p><p data-lang="en" style="display:none;">Electrical, electronic & engineering spares for fleets.</p></article>
+        <article class="card"><h3 data-lang="es">Energía</h3><h3 data-lang="en" style="display:none;">Energy</h3><p data-lang="es">Componentes y servicios para continuidad operativa.</p><p data-lang="en" style="display:none;">Components and services for operational continuity.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Representaciones -->
+  <section id="representaciones" class="section" aria-labelledby="reps-title">
+    <div class="container">
+      <h2 id="reps-title">Representaciones</h2>
+      <p>Estas son algunas de las marcas y fabricantes con los que trabajamos en Chile.</p>
+      <div class="features" style="grid-template-columns: repeat(4, 1fr);">
+        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
+          <img src="/assets/logos/lockheed-martin.svg" alt="Lockheed Martin (logo)" style="max-height:40px;" />
+        </article>
+        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
+          <img src="/assets/logos/l3-mapps.svg" alt="L3 Mapps (logo)" style="max-height:40px;" />
+        </article>
+        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
+          <span style="color:var(--muted)">Tu marca 1</span>
+        </article>
+        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
+          <span style="color:var(--muted)">Tu marca 2</span>
+        </article>
+      </div>
+      <p style="margin-top:12px; color:var(--muted); font-size:14px;">Las marcas listadas se muestran como referencia de colaboración y/o representación local. Confirma vigencia con ITSL.</p>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="section" aria-labelledby="contact-title">
+    <div class="container">
+      <h2 id="contact-title">Contacto</h2>
+      <p>¿Hablamos? Completa el formulario y te responderemos a la brevedad. También puedes escribir a <a href="mailto:info@itsl.cl">info@itsl.cl</a> o llamarnos al <a href="tel:+56322801088">+56 32 280 1088</a>.</p>
+
+      <!-- Opción 1: Netlify forms (simple y sin backend) -->
+      <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contacto" />
+        <p hidden>
+          <label>¿Eres un robot? <input name="bot-field" /></label>
+        </p>
+        <p>
+          <label>Nombre<br />
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+          </label>
+        </p>
+        <p>
+          <label>Email<br />
+            <input type="email" name="email" placeholder="tucorreo@ejemplo.com" required />
+          </label>
+        </p>
+        <p>
+          <label>Mensaje<br />
+            <textarea name="mensaje" rows="5" placeholder="Cuéntanos en qué te ayudamos" required></textarea>
+          </label>
+        </p>
+        <button type="submit">Enviar</button>
+      </form>
+
+      <!-- Opción 2 (alternativa): Formspree o tu backend propio. Reemplaza la acción del form. -->
+      <!-- <form action="https://formspree.io/f/XXXX" method="POST"> ... </form> -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; flex-direction:column; gap:10px;">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <small>© <span id="year"></span> International Technical Supply Ltda. Todos los derechos reservados.</small>
+        <small><a href="#inicio">Volver arriba ↑</a></small>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; color:var(--muted); font-size:12px;">
+        <span>Dirección: Pasaje Polcura 292, Belloto Centro, Quilpué, Valparaíso, Chile</span>
+        <span>Proveedor habilitado en <a href="https://www.mercadopublico.cl/" target="_blank" rel="noopener">ChileCompra</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+    // Toggle ES/EN
+    const toggle = document.getElementById('lang-toggle');
+    let currentLang = 'es';
+    function switchLang(lang){
+      document.querySelectorAll('[data-lang]').forEach(el=>{
+        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+      });
+      currentLang = lang;
+    }
+    toggle?.addEventListener('click',()=> switchLang(currentLang === 'es' ? 'en' : 'es'));
+  </script>
+</body>
+</html>

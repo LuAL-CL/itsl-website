@@ -91,7 +91,45 @@
       .hero-grid, .about-grid { grid-template-columns: 1fr; }
       .features { grid-template-columns: 1fr; }
       .nav-links { gap: 12px; }
-    }
+}
+
+/* Ajustes móviles */
+@media (max-width: 900px) {
+  .hero { padding: 56px 0 28px; }
+  h1 { font-size: 30px; line-height: 1.15; }
+  .lead { font-size: 16px; }
+
+  /* Hero a 1 columna y la imagen debajo del texto */
+  .hero-grid { 
+    grid-template-columns: 1fr; 
+    gap: 16px; 
+  }
+  .hero-card img { width: 100%; height: auto; }
+
+  /* Menú compacto y sin desbordes */
+  .nav { padding: 10px 0; }
+  .nav-links { gap: 10px; flex-wrap: wrap; }
+  .cta { padding: 8px 12px; }
+
+  /* Contenedor más estrecho para fácil lectura */
+  .container { width: min(740px, 92vw); }
+
+  /* Tarjetas en 1 columna */
+  .features { grid-template-columns: 1fr; gap: 14px; }
+
+  /* Grid de “Nosotros”: si solo hay un hijo, ocupa todo */
+  .about-grid { grid-template-columns: 1fr; }
+  .about-grid > *:only-child { grid-column: 1 / -1; }
+
+  /* Inputs cómodos en móvil */
+  input, textarea { font-size: 16px; }
+}
+
+/* Evitar saltos si eliminaste la imagen lateral en “Nosotros” */
+.about-grid > *:only-child { grid-column: 1 / -1; }
+
+/* Rutas del hero si usas fondo con imagen */
+.hero { background-size: cover; background-position: center; }
   </style>
   <script>
     // Scroll suave
@@ -134,12 +172,12 @@
   <main id="inicio" class="hero" style="background-image:url('/assets/banner-hero.png'); background-size:cover; background-position:center;">
     <div class="container hero-grid" style="backdrop-filter: saturate(120%) brightness(1);">
       <div>
-        <div class="kicker" data-lang="es">Desde 1995</div>
-        <div class="kicker" data-lang="en" style="display:none;">Since 1995</div>
-        <h1>
-          <span data-lang="es">Suministro técnico especializado para defensa y sector marítimo</span>
-          <span data-lang="en" style="display:none;">Specialized technical supply for defense and maritime sectors</span>
-        </h1>
+        <div class="kicker" data-lang="es">30 años — Desde 1995</div>
+<div class="kicker" data-lang="en" style="display:none;">30 years — Since 1995</div>
+<h1>
+  <span data-lang="es">Suministro técnico especializado para los sectores Defensa, Marítimo e Industrial</span>
+  <span data-lang="en" style="display:none;">Specialized technical supply for the Defense, Maritime and Industrial sectors</span>
+</h1>
         <p class="lead">
           <span data-lang="es">ITSL provee repuestos eléctricos, electrónicos y de ingeniería, con foco en la <strong>Armada de Chile</strong> y programas de modernización y actualización tecnológica.</span>
           <span data-lang="en" style="display:none;">ITSL provides electrical, electronic, and engineering spare parts, focused on the <strong>Chilean Navy</strong> and modernization & upgrade programs.</span>
@@ -240,35 +278,61 @@
       <h2 id="sectors-title" data-lang="es">Sectores</h2>
       <h2 id="sectors-title-en" data-lang="en" style="display:none;">Sectors</h2>
       <div class="features">
-        <article class="card"><h3 data-lang="es">Defensa</h3><h3 data-lang="en" style="display:none;">Defense</h3><p data-lang="es">Suministro y modernización para fragatas y sistemas críticos.</p><p data-lang="en" style="display:none;">Supply and upgrades for frigates and critical systems.</p></article>
-        <article class="card"><h3 data-lang="es">Marítimo</h3><h3 data-lang="en" style="display:none;">Maritime</h3><p data-lang="es">Repuestos eléctricos, electrónicos y de ingeniería para flotas.</p><p data-lang="en" style="display:none;">Electrical, electronic & engineering spares for fleets.</p></article>
-        <article class="card"><h3 data-lang="es">Energía</h3><h3 data-lang="en" style="display:none;">Energy</h3><p data-lang="es">Componentes y servicios para continuidad operativa.</p><p data-lang="en" style="display:none;">Components and services for operational continuity.</p></article>
-      </div>
+  <!-- Defensa -->
+  <article class="card">
+    <h3 data-lang="es">Defensa</h3>
+    <h3 data-lang="en" style="display:none;">Defense</h3>
+    <p data-lang="es">Suministro y modernización de sistemas críticos. Clientes: Armada, Fuerza Aérea, Ejército y Carabineros.</p>
+    <p data-lang="en" style="display:none;">Supply and modernization of critical systems. Clients: Navy, Air Force, Army and Police.</p>
+  </article>
+
+  <!-- Marítimo -->
+  <article class="card">
+    <h3 data-lang="es">Marítimo</h3>
+    <h3 data-lang="en" style="display:none;">Maritime</h3>
+    <p data-lang="es">Repuestos eléctricos, electrónicos y de ingeniería para flotas y astilleros. Registrados como proveedores de <strong>ASMAR</strong>.</p>
+    <p data-lang="en" style="display:none;">Electrical, electronic and engineering spares for fleets and shipyards. Registered supplier of <strong>ASMAR</strong>.</p>
+  </article>
+
+  <!-- Industrial -->
+  <article class="card">
+    <h3 data-lang="es">Industrial</h3>
+    <h3 data-lang="en" style="display:none;">Industrial</h3>
+    <p data-lang="es">Componentes y soluciones técnicas para continuidad operativa y mantenimiento.</p>
+    <p data-lang="en" style="display:none;">Technical components and solutions for operational continuity and maintenance.</p>
+  </article>
+</div>
     </div>
   </section>
 
   <!-- Representaciones -->
-  <section id="representaciones" class="section" aria-labelledby="reps-title">
-    <div class="container">
-      <h2 id="reps-title">Representaciones</h2>
-      <!-- <p>Estas son algunas de las empresas y fabricantes con los que trabajamos en Chile.</p> -->
-      <div class="features" style="grid-template-columns: repeat(4, 1fr);">
-        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
-          <img src="/assets/logos/lockheed-martin.svg" alt="Lockheed Martin (logo)" style="max-height:40px;" />
-        </article>
-        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
-          <img src="/assets/logos/l3-mapps.svg" alt="L3 Mapps (logo)" style="max-height:40px;" />
-        </article>
-        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
-          <span style="color:var(--muted)">Tu marca 1</span>
-        </article>
-        <article class="card" style="display:flex;align-items:center;justify-content:center;min-height:90px;">
-          <span style="color:var(--muted)">Tu marca 2</span>
-        </article>
-      </div>
-      <p style="margin-top:12px; color:var(--muted); font-size:14px;">Las marcas listadas se muestran como referencia de colaboración y/o representación local. Confirma vigencia con ITSL.</p>
-    </div>
-  </section>
+<section id="representaciones" class="section" aria-labelledby="reps-title">
+  <div class="container">
+    <h2 id="reps-title" data-lang="es">Representaciones internacionales</h2>
+    <h2 id="reps-title-en" data-lang="en" style="display:none;">International representations</h2>
+
+    <p data-lang="es">Trabajamos con fabricantes y socios internacionales en programas de modernización y soporte técnico. El uso de marcas/logotipos puede estar restringido por contrato; por ello listamos referencias de colaboración de forma textual.</p>
+    <p data-lang="en" style="display:none;">We work with international manufacturers and partners on modernization and technical support programs. The use of brands/logos may be contract-restricted; therefore we list collaboration references textually.</p>
+
+    <ul class="card" style="padding:16px; list-style:disc; margin-top:16px;">
+      <li data-lang="es"><strong>Lockheed Martin Canadá</strong> — colaboración en ADP.</li>
+      <li data-lang="en" style="display:none;"><strong>Lockheed Martin Canada</strong> — collaboration on ADP.</li>
+
+      <li data-lang="es"><strong>L3 Harris MAPPS Inc</strong> — contrato vigente hasta 2026 (IPMS Clase M).</li>
+      <li data-lang="en" style="display:none;"><strong>L3 Harris MAPPS Inc</strong> — active contract through 2026 (M-Class IPMS).</li>
+
+      <!-- Si confirmas permiso de uso de logo más adelante, añadimos los logos.
+           Por ahora, solo texto para cumplir contrato y evitar conflictos. -->
+    </ul>
+
+    <p style="margin-top:12px; color:var(--muted); font-size:14px;" data-lang="es">
+      Nota: Lista referencial de colaboración y/o representación local. Confirmar vigencia con ITSL.
+    </p>
+    <p style="margin-top:12px; color:var(--muted); font-size:14px; display:none;" data-lang="en">
+      Note: Reference list of collaboration and/or local representation. Please confirm current status with ITSL.
+    </p>
+  </div>
+</section>
 
   <!-- Contacto -->
   <section id="contacto" class="section" aria-labelledby="contact-title">

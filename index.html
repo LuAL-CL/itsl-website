@@ -407,17 +407,45 @@
     // Año dinámico en el footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script>
-    // Toggle ES/EN
-    const toggle = document.getElementById('lang-toggle');
-    let currentLang = 'es';
-    function switchLang(lang){
-      document.querySelectorAll('[data-lang]').forEach(el=>{
-        el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+<script>
+  // Toggle ES/EN con soporte para formularios y persistencia
+  const toggleBtn = document.getElementById('lang-toggle');
+  const form = document.getElementById('contact-form');
+  let currentLang = localStorage.getItem('itsl_lang') || 'es';
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      const show = el.getAttribute('data-lang') === lang;
+      el.style.display = show ? '' : 'none';
+
+      // Habilitar/deshabilitar inputs dentro del bloque oculto
+      el.querySelectorAll('input, textarea, select, button').forEach(f => {
+        if (show) {
+          f.disabled = false;
+          if (f.dataset.wasreq === '1') f.required = true;
+        } else {
+          if (f.required) f.dataset.wasreq = '1';
+          f.required = false;
+          f.disabled = true;
+        }
       });
-      currentLang = lang;
-    }
-    toggle?.addEventListener('click',()=> switchLang(currentLang === 'es' ? 'en' : 'es'));
-  </script>
+    });
+
+    // Acción del form (puede quedarse fija en /gracias)
+    form?.setAttribute('action', '/gracias');
+
+    // Guardar idioma actual
+    localStorage.setItem('itsl_lang', lang);
+  }
+
+  // Aplicar idioma inicial
+  applyLang(currentLang);
+
+  // Botón del toggle
+  toggleBtn?.addEventListener('click', () => {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    applyLang(currentLang);
+  });
+</script>
 </body>
 </html>

@@ -1,28 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Gracias</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Redirección automática en 4s -->
+  <title>Gracias / Thanks</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta http-equiv="refresh" content="4; url=/" />
   <style>
-    :root { --bg:#0d3e67; --text:#e8edf2; --accent:#69a6ff; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif; background:var(--bg); color:var(--text); display:grid; place-items:center; min-height:100vh; padding:24px; }
-    .card { max-width:720px; width:100%; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:28px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,.25); }
-    h1 { margin:0 0 8px; font-size:28px; }
-    p { margin:8px 0; opacity:.95; }
-    .btn { display:inline-block; margin-top:14px; padding:10px 16px; border-radius:10px; background:var(--accent); color:#00203d; text-decoration:none; font-weight:600; }
-    .muted { color:#c7d5e5; font-size:14px; }
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+           display:grid; place-content:center; min-height:100dvh; padding:24px; text-align:center; }
+    .card { padding:28px; border-radius:16px; box-shadow: 0 10px 30px rgba(0,0,0,.15);
+            background: rgba(255,255,255,.08); backdrop-filter: blur(6px); }
+    a { text-decoration:none; }
+    .muted { opacity:.7; font-size:.95rem; margin-top:8px; }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>¡Gracias por contactarnos!</h1>
-    <p>Tu mensaje fue enviado correctamente. Te responderemos a la brevedad.</p>
-    <p class="muted">Serás redirigido al inicio en unos segundos…</p>
-    <a class="btn" href="/">Volver al inicio ahora</a>
+    <h1 data-lang="es">¡Gracias por contactarnos!</h1>
+    <h1 data-lang="en" style="display:none;">Thanks for your message!</h1>
+
+    <p data-lang="es">Tu mensaje fue enviado correctamente. Te redirigiremos al inicio en unos segundos…</p>
+    <p data-lang="en" style="display:none;">Your message was sent successfully. You’ll be redirected to the home page in a few seconds…</p>
+
+    <p class="muted">
+      <a href="/">← Volver / Go back</a>
+    </p>
   </div>
+
+  <script>
+    // Si tu página principal está en EN al momento del envío, muestra EN aquí también.
+    const lang = (localStorage.getItem('itsl_lang') || 'es');
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+    });
+  </script>
 </body>
 </html>

@@ -334,33 +334,59 @@
 
   <!-- Contacto -->
   <section id="contacto" class="section" aria-labelledby="contact-title">
-    <div class="container">
-      <h2 id="contact-title">Contacto</h2>
-      <p>¿Hablamos? Completa el formulario y te responderemos a la brevedad. También puedes escribir a <a href="mailto:info@itsl.cl">info@itsl.cl</a>.</p>
+  <div class="container">
+    <h2 id="contact-title" data-lang="es">Contacto</h2>
+    <h2 id="contact-title-en" data-lang="en" style="display:none;">Contact</h2>
 
-      <!-- Opción 1: Netlify forms (simple y sin backend) -->
-      <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contacto" />
-        <p hidden>
-          <label>¿Eres un robot? <input name="bot-field" /></label>
-        </p>
-        <p>
-          <label>Nombre<br />
-            <input type="text" name="nombre" placeholder="Tu nombre" required />
-          </label>
-        </p>
-        <p>
-          <label>Email<br />
-            <input type="email" name="email" placeholder="tucorreo@ejemplo.com" required />
-          </label>
-        </p>
-        <p>
-          <label>Mensaje<br />
-            <textarea name="mensaje" rows="5" placeholder="Cuéntanos en qué te ayudamos" required></textarea>
-          </label>
-        </p>
-        <button type="submit">Enviar</button>
-      </form>
+    <p data-lang="es">
+      ¿Hablamos? Completa el formulario y te responderemos a la brevedad.
+      También puedes escribir a <a href="mailto:info@itsl.cl">info@itsl.cl</a>.
+    </p>
+    <p data-lang="en" style="display:none;">
+      Let’s talk! Fill out the form and we’ll get back to you shortly.
+      You can also email us at <a href="mailto:info@itsl.cl">info@itsl.cl</a>.
+    </p>
+
+    <form name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/gracias">
+      <input type="hidden" name="form-name" value="contacto" />
+      <p hidden><label>Don’t fill this out if you’re human: <input name="bot-field" /></label></p>
+
+      <p data-lang="es">
+        <label>Nombre<br />
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
+        </label>
+      </p>
+      <p data-lang="en" style="display:none;">
+        <label>Name<br />
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+      </p>
+
+      <p data-lang="es">
+        <label>Email<br />
+          <input type="email" name="email" placeholder="tucorreo@ejemplo.com" required />
+        </label>
+      </p>
+      <p data-lang="en" style="display:none;">
+        <label>Email<br />
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+      </p>
+
+      <p data-lang="es">
+        <label>Mensaje<br />
+          <textarea name="mensaje" rows="5" placeholder="Cuéntanos en qué te ayudamos" required></textarea>
+        </label>
+      </p>
+      <p data-lang="en" style="display:none;">
+        <label>Message<br />
+          <textarea name="message" rows="5" placeholder="Tell us how we can help" required></textarea>
+        </label>
+      </p>
+
+      <button type="submit" data-lang="es">Enviar</button>
+      <button type="submit" data-lang="en" style="display:none;">Send</button>
+    </form>
 
       <!-- Opción 2 (alternativa): Formspree o tu backend propio. Reemplaza la acción del form. -->
       <!-- <form action="https://formspree.io/f/XXXX" method="POST"> ... </form> -->

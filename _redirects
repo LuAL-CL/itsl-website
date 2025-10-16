@@ -1,3 +1,7 @@
+/gracias   /gracias.html   200!
+/thanks    /gracias.html   200!
+
+# dominio → www + https
 https://itsl.cl/*      https://www.itsl.cl/:splat  301!
 http://itsl.cl/*       https://www.itsl.cl/:splat  301!
 http://www.itsl.cl/*   https://www.itsl.cl/:splat  301!

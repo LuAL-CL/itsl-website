@@ -60,10 +60,11 @@ Redeploy completo después de cambios
 /gracias   /gracias.html   303!
 /thanks    /gracias.html   303!
 
-https://itsl.cl/*      https://www.itsl.cl/:splat  301!
-http://itsl.cl/*       https://www.itsl.cl/:splat  301!
-http://www.itsl.cl/*   https://www.itsl.cl/:splat  301!
+`https://itsl.cl/*      https://www.itsl.cl/:splat  301!`
 
+`http://itsl.cl/*       https://www.itsl.cl/:splat  301!`
+
+`http://www.itsl.cl/*   https://www.itsl.cl/:splat  301!`
 
 El código 303! convierte el POST en GET y evita el 404 tras el envío del formulario.
 
